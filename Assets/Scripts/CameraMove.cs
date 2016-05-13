@@ -12,8 +12,6 @@ public class CameraMove : MonoBehaviour
     //몇초에 도달 할지.
     public float smoothTime = 1f;
 
-
-
     // Use this for initialization
     void Awake()
     {
