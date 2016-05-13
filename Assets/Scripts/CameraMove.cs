@@ -29,6 +29,6 @@ public class CameraMove : MonoBehaviour
         myTrans.position = Vector3.SmoothDamp(myTrans.position, player.position, ref currentVelocity, smoothTime);
 
         //myTrans.rotation = player.rotation;
-        myTrans.rotation = Quaternion.Slerp(myTrans.rotation, player.rotation, camaraTurn * Time.deltaTime);
+        //myTrans.rotation = Quaternion.Slerp(myTrans.rotation, player.rotation, camaraTurn * Time.deltaTime);
     }
 }

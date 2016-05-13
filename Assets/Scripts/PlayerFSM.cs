@@ -27,15 +27,22 @@ public class PlayerFSM : FSMBase {
         }
 
         //Move Rogic
+     
         dir = new Vector3(moveSpeed * -v, dir.y, moveSpeed * h);
         if (_cc.isGrounded)
         {
-            dir.y = 0f;
+            dir.y = -6f;
             if (Input.GetButtonDown("Jump"))
                 dir.y = jumpSpeed;
         }
         dir.y -= gravity * Time.deltaTime;
         _cc.Move( dir * Time.deltaTime);
+
+        if (h > 0)
+            transform.rotation = new Quaternion(0, 0, 0, 1);
+        else if (h < 0)
+            transform.rotation = new Quaternion(0, 180, 0, 1);
+
     }
     protected override void Awake()
     {

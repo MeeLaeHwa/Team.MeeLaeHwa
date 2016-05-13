@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camaraTurn: 2
-  smoothTime: 1
+  smoothTime: 0.2
 --- !u!4 &5374253
 Transform:
   m_ObjectHideFlags: 0
@@ -543,9 +543,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1082806838}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.36183065, y: 0, z: 0, w: 0.9322438}
   m_LocalPosition: {x: 0, y: 1, z: 1.49}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 8.038727}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -577,7 +577,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 839d006054d7e8c4fb0689eb360c7977, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -690,7 +690,8 @@ MonoBehaviour:
   curHP: 0
   attack: 0
   moveSpeed: 10
-  jumpSpeed: 0
+  jumpSpeed: 20
+  gravity: 60
   waeapon: {fileID: 0}
 --- !u!1 &1723750645
 GameObject:
