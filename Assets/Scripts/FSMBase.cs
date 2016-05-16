@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FSMBase : MonoBehaviour {
+public class FSMBase : MonoBehaviour
+{
     public CharacterState state;
     public Animator _a;
     public CharacterController _cc;
@@ -38,7 +39,7 @@ public class FSMBase : MonoBehaviour {
     }
     protected virtual IEnumerator Idle()
     {
-        while(_isNewState)
+        while (!_isNewState)
         {
             yield return null;
         }
