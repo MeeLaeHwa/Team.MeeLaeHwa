@@ -13,7 +13,7 @@ public class PlayerFSM : FSMBase
     private Vector3 dir;
     public Animation waeapon;
 
-
+    private Vector3 hitVec;
     private float h;
     private float v;
     void Update()
@@ -28,15 +28,11 @@ public class PlayerFSM : FSMBase
             v = 0;
             h = transform.rotation.y != 0 ? -0.5f : 0.5f;
         }
-        if (state == CharacterState.Hit)
-        {
-            v = 0;
-            h = transform.rotation.y != 0 ? 0.3f : -0.3f;
-        }
         dir = new Vector3(moveSpeed * -v, dir.y, moveSpeed * h);
 
         dir.y -= gravity * Time.deltaTime;
-        _cc.Move(dir * Time.deltaTime);
+        if(!(state == CharacterState.Hit))
+            _cc.Move(dir * Time.deltaTime);
 
         //Rotate
         if (h > 0)
@@ -145,10 +141,12 @@ public class PlayerFSM : FSMBase
     protected virtual IEnumerator Hit()
     {
         float _t = 0;
+        Debug.Log(_t);
         while (!_isNewState)
         {
             yield return null;
             _t += Time.deltaTime;
+            _cc.Move(hitVec *5  * Time.deltaTime);
             if (currentHp <= 0)
             {
                 currentHp = 0;
@@ -169,12 +167,13 @@ public class PlayerFSM : FSMBase
             yield return null;
         }
     }
-    public void SendAttack(EenemyFSM taget)
+    public void SendAttack(EnemyFSM taget)
     {
         taget.ProcessDamage(attack);
     }
-    public void ProcessDamage(float damage)
+    public void ProcessDamage(float damage, Vector3 hitVec)
     {
+        this.hitVec = hitVec;
         currentHp -= (int)damage;
         SetState(CharacterState.Hit);
     }
