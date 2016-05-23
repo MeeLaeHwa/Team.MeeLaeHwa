@@ -11,6 +11,6 @@ public enum CharacterState
     Dead,
     Jump,
     Attack,
-
+    Hit,
     Max,
 }
