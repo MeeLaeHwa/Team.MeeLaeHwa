@@ -54,13 +54,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ShadowTex
-        second:
-          m_Texture: {fileID: 2800000, guid: acac49e6c49c1da4d91b3702823fe4cf, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _TranslucencyMap
         second:
           m_Texture: {fileID: 2800000, guid: 55c6ac3e6f8270d469c6046696f009db, type: 3}
@@ -71,6 +64,13 @@ Material:
           name: _BumpSpecMap
         second:
           m_Texture: {fileID: 2800000, guid: a0d503ff62e3323448a75a7485e3c50b, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ShadowTex
+        second:
+          m_Texture: {fileID: 2800000, guid: acac49e6c49c1da4d91b3702823fe4cf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 649
-  materialHash: 3944b76a8a7b56c64ebb076698f25681215482368
+  materialHash: 575d461a03c3c38210138100efcc7a79215482368
   root:
     _uniqueID: 1
     seed: 1234
