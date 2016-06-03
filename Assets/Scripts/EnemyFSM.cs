@@ -61,6 +61,13 @@ public class EnemyFSM : FSMBase {
             Vector3 dir = transform.position - player.position;
             dir.Set(dir.x, 0, dir.z);
             Vector3 moveDir = dir.normalized * -1;
+
+
+            if (moveDir.z > 0)
+                transform.rotation = new Quaternion(0, 0, 0, 1);
+            else if (moveDir.z < 0)
+                transform.rotation = new Quaternion(0, 180, 0, 1);
+
             if (Vector3.Distance(transform.position, transform.position+dir) < attackRange && !_playerFSM.IsDead())
             {
                 SetState(CharacterState.Attack);
@@ -71,10 +78,6 @@ public class EnemyFSM : FSMBase {
                 SetState(CharacterState.Idle);
                 break;
             }
-            if (moveDir.z > 0)
-                transform.rotation = new Quaternion(0, 0, 0, 1);
-            else if (moveDir.z < 0)
-                transform.rotation = new Quaternion(0, 180, 0, 1);
 
             _cc.Move(moveDir * moveSpeed * Time.deltaTime + Physics.gravity*Time.deltaTime);
         }
