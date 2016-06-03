@@ -226,7 +226,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 491142, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 491142, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -271,6 +271,10 @@ Prefab:
     - target: {fileID: 100380, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443348, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
+      propertyPath: catchRange
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13648638, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
@@ -563,6 +567,18 @@ Prefab:
       propertyPath: maxHP
       value: 200000
       objectReference: {fileID: 0}
+    - target: {fileID: 6472270, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491574, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
+      propertyPath: attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491574, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
+      propertyPath: cWeapon
+      value: 
+      objectReference: {fileID: 1949502578}
     m_RemovedComponents:
     - {fileID: 11427650, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
@@ -600,6 +616,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1221052471}
   player: {fileID: 2134375372}
+--- !u!64 &1949502578 stripped
+MeshCollider:
+  m_PrefabParentObject: {fileID: 6472270, guid: 502e98559a39fdd498b521fc58107ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1303302722}
 --- !u!1 &1991919324 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 136634, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
@@ -630,6 +651,22 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.6}
+--- !u!1 &1999619973 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130206, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
+  m_PrefabInternal: {fileID: 1303302722}
+--- !u!114 &1999619978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999619973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b64e76ca602e478b10b8da8694853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _c: {fileID: 2134375372}
 --- !u!114 &2134375372 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11491574, guid: 502e98559a39fdd498b521fc58107ef4,

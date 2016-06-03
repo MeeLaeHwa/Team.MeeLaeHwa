@@ -11,8 +11,7 @@ public class PlayerFSM : FSMBase
     public float jumpSpeed;
     public float gravity;
     private Vector3 dir;
-    public Animation waeapon;
-
+    public Collider cWeapon;
     private Vector3 hitVec;
     private float h;
     private float v;
@@ -44,6 +43,7 @@ public class PlayerFSM : FSMBase
     protected override void Awake()
     {
         base.Awake();
+        cWeapon.enabled = false;
     }
     protected override void OnEnable()
     {
@@ -169,12 +169,19 @@ public class PlayerFSM : FSMBase
     }
     public void SendAttack(EnemyFSM taget)
     {
-        taget.ProcessDamage(attack);
+        Vector3 dir = (taget.transform.position - transform.position);
+        dir.Set(0, 0, dir.z);
+        dir.Normalize();
+        taget.ProcessDamage(attack, dir);
     }
     public void ProcessDamage(float damage, Vector3 hitVec)
     {
         this.hitVec = hitVec;
         currentHp -= (int)damage;
         SetState(CharacterState.Hit);
+    }
+    public override void WeaponSetEnabled(bool enabled)
+    {
+        cWeapon.enabled = enabled;
     }
 }

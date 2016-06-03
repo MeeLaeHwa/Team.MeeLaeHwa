@@ -24,6 +24,7 @@ public class Weapon : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("check");
         switch (owner) {
             case Owner.PLAYER:
                 if (other.transform.CompareTag("Enemy"))

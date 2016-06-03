@@ -12,6 +12,7 @@ public class EnemyFSM : FSMBase {
     protected PlayerFSM _playerFSM;
     public float attackRange = 2f;
     public Collider weapon;
+    private Vector3 hitVec;
     protected override void Awake()
     {
         base.Awake();
@@ -97,14 +98,30 @@ public class EnemyFSM : FSMBase {
     }
     protected virtual IEnumerator Hit()
     {
+        float _t = 0;
         while (!_isNewState)
         {
             yield return null;
+            _t += Time.deltaTime;
+            _cc.Move(hitVec * 5 * Time.deltaTime);
             if (currentHp <= 0)
             {
                 currentHp = 0;
                 SetState(CharacterState.Dead);
+                break;
             }
+            if (_t > 0.5)
+            {
+                SetState(CharacterState.Idle);
+                break;
+            }
+        }
+    }
+    protected virtual IEnumerator Dead()
+    {
+        while (!_isNewState)
+        {
+            yield return null;
         }
     }
     protected virtual void Respwan()
@@ -118,14 +135,11 @@ public class EnemyFSM : FSMBase {
         dir.Normalize();
         _playerFSM.ProcessDamage(attack,dir);
     }
-    public void ProcessDamage(float damage)
+    public void ProcessDamage(float damage, Vector3 hitVec)
     {
+        this.hitVec = hitVec;
         currentHp -= (int)damage;
         SetState(CharacterState.Hit);
-        
-        if (!IsDead() && state != CharacterState.Attack)
-        {
-        }
     }
     public override void WeaponSetEnabled(bool enabled)
     {
