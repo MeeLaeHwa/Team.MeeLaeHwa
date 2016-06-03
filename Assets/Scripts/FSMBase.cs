@@ -48,4 +48,5 @@ public class FSMBase : MonoBehaviour
     {
         return (state == CharacterState.Dead);
     }
+    public virtual void WeaponSetEnabled(bool enabled) { }
 }

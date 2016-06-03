@@ -266,7 +266,11 @@ Prefab:
       objectReference: {fileID: 1991919327}
     - target: {fileID: 11443348, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
       propertyPath: attackRange
-      value: 1.5
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100380, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13648638, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
@@ -555,9 +559,47 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11491574, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
+      propertyPath: maxHP
+      value: 200000
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11427650, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1840033842 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 176698, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
+  m_PrefabInternal: {fileID: 684668270}
+--- !u!114 &1840033845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840033842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278b64e76ca602e478b10b8da8694853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _c: {fileID: 1221052471}
+--- !u!1 &1949502575 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 175810, guid: 502e98559a39fdd498b521fc58107ef4, type: 2}
+  m_PrefabInternal: {fileID: 1303302722}
+--- !u!114 &1949502577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949502575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3be26a86b98e7b449817bf7771520a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1221052471}
+  player: {fileID: 2134375372}
 --- !u!1 &1991919324 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 136634, guid: 7499825801a48014a87b508ab54ce2c6, type: 2}
@@ -574,6 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1221052471}
+  player: {fileID: 2134375372}
 --- !u!136 &1991919327
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -587,3 +630,9 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.6}
+--- !u!114 &2134375372 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11491574, guid: 502e98559a39fdd498b521fc58107ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1303302722}
+  m_Script: {fileID: 11500000, guid: b55c7ec288e954b45901caeb2b7c43f7, type: 3}

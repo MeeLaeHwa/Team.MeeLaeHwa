@@ -97,7 +97,7 @@ public class PlayerFSM : FSMBase
             if (_cc.isGrounded)
             {
                 dir.y = -6f;
-                if (Input.GetButtonDown("Jump") && state != CharacterState.Attack && state != CharacterState.Jump)
+                if (Input.GetButtonDown("Jump") && state != CharacterState.Attack && state != CharacterState.Jump && state != CharacterState.Hit)
                 {
                     dir.y = jumpSpeed;
                     SetState(CharacterState.Jump);

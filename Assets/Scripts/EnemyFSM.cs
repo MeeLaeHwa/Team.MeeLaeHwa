@@ -37,10 +37,19 @@ public class EnemyFSM : FSMBase {
         {
             //Process
             yield return null;
-            if (Vector3.Distance(transform.position, player.position) < catchRange && !_playerFSM.IsDead())
+            Vector3 myPos = transform.position;
+            Vector3 playerPos = player.position;
+            myPos.y = 0;
+            playerPos.y = 0;
+            if (Vector3.Distance(myPos, playerPos) < catchRange && !_playerFSM.IsDead())
             {
                 SetState(CharacterState.Run);
                 break;
+            }
+            if(!_cc.isGrounded)
+            {
+                Debug.Log("isGrounded : " + _cc.isGrounded);
+                _cc.Move(Physics.gravity * Time.deltaTime);
             }
         } while (!_isNewState);
     }
@@ -50,8 +59,8 @@ public class EnemyFSM : FSMBase {
         {
             yield return null;
             Vector3 dir = transform.position - player.position;
-            Vector3 moveDir = dir.normalized * -1;
             dir.Set(dir.x, 0, dir.z);
+            Vector3 moveDir = dir.normalized * -1;
             if (Vector3.Distance(transform.position, transform.position+dir) < attackRange && !_playerFSM.IsDead())
             {
                 SetState(CharacterState.Attack);
@@ -67,13 +76,12 @@ public class EnemyFSM : FSMBase {
             else if (moveDir.z < 0)
                 transform.rotation = new Quaternion(0, 180, 0, 1);
 
-            _cc.Move(moveDir * moveSpeed * Time.deltaTime);
+            _cc.Move(moveDir * moveSpeed * Time.deltaTime + Physics.gravity*Time.deltaTime);
         }
     }
 
     protected virtual IEnumerator Attack()
     {
-        weapon.enabled = true;
         while (!_isNewState)
         {
             yield return null;
@@ -83,7 +91,6 @@ public class EnemyFSM : FSMBase {
                 break;
             }
         }
-        weapon.enabled = false;
     }
     protected virtual IEnumerator Hit()
     {
@@ -116,5 +123,9 @@ public class EnemyFSM : FSMBase {
         if (!IsDead() && state != CharacterState.Attack)
         {
         }
+    }
+    public override void WeaponSetEnabled(bool enabled)
+    {
+        weapon.enabled = enabled;
     }
 }
