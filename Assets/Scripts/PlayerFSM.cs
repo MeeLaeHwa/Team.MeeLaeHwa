@@ -184,4 +184,8 @@ public class PlayerFSM : FSMBase
     {
         cWeapon.enabled = enabled;
     }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.transform.CompareTag("DeadZone")) SetState(CharacterState.Dead);
+    //}
 }
